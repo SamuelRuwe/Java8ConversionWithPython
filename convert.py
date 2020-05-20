@@ -1,23 +1,24 @@
-def create_updated_file(read_file):
-    file_type = read_file.name.split('.')[1]
-    dict_file = get_dict(file_type)
-    # print(get_dict(file_type))
-    dict = create_dict(dict_file)
-    updated_file_copy = create_copied_file_name(read_file.name)
-    with open(updated_file_copy, 'w') as wf:
-        for line in read_file:
-            for key in dict:
-                testString = key
-                a = line.lower()
-                pos = a.find(testString)
-                if pos != -1:
-                    new_string = dict[key]
-                    b = line[0:pos]
-                    c = line[(pos+len(testString)):-1]
-                    wf.write(str(b) + str(new_string) + str(c) + str('\n'))
-                    break
-                elif dict[key] == "eof":
-                    wf.write(line)
+def convert_to_java_11(read_file):
+    with open(read_file, 'r') as rf:
+        file_type = rf.name.split('.')[1]
+        dict_file = get_dict(file_type)
+        # print(get_dict(file_type))
+        dict = create_dict(dict_file)
+        updated_file_copy = create_copied_file_name(rf.name)
+        with open(updated_file_copy, 'w') as wf:
+            for line in rf:
+                for key in dict:
+                    testString = key
+                    a = line.lower()
+                    pos = a.find(testString)
+                    if pos != -1:
+                        new_string = dict[key]
+                        b = line[0:pos]
+                        c = line[(pos+len(testString)):-1]
+                        wf.write(str(b) + str(new_string) + str(c) + str('\n'))
+                        break
+                    elif dict[key] == "eof":
+                        wf.write(line)
 
 def create_dict(file_name):
     dict = {}
@@ -40,11 +41,9 @@ def get_dict(file_type):
     }
     return (str(dict[file_type]))
 
-with open('Main.java', 'r') as rf:
-    create_updated_file(rf)
+convert_to_java_11('Main.java')
 
-with open('application.properties', 'r') as rf:
-    create_updated_file(rf)
+convert_to_java_11('application.properties')
 
 
 
