@@ -21,3 +21,11 @@ with open('Main.java', 'r') as rf:
                         wf.write(line)
 
 #optimize this code by checking package names in alphabetical order
+
+# with open('Text.txt', 'r') as rf:
+#     with open('test_copy.txt', 'w') as wf:
+#         for line in rf:
+#             wf.write(line)
+#             a = wf.name.split('.')[0]
+#             print(a)
+#
